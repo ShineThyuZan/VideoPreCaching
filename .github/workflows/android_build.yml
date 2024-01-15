@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
         with:
             persist-credentials: false
-            repository: ShineThyuZan/VideoPreCaching
+            repository: https://github.com/ShineThyuZan/VideoPreCaching
             ref: develop
             token: ${{ secrets.VIDEOPRECACHING }}  # Replace 'MY_PAT' with your secret name
 

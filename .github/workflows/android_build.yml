@@ -12,8 +12,9 @@ jobs:
         uses: actions/checkout@v3
         with:
             persist-credentials: false
-            ref: ${{ github.head_ref }}
-            token: ${{ secrets.UBERSHMEKEL_ALT_TOKEN }}
+            repository: ShineThyuZan/VideoPreCaching
+            ref: develop
+            token: ${{ secrets.VideoPreCaching }}  # Replace 'MY_PAT' with your secret name
 
       - name: Set Up JDK
         uses: actions/setup-java@v3

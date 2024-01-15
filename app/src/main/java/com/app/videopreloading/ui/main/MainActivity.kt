@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun openVideoPlayScreen(videoUrl: String) {
         val bundle = Bundle()
+
         bundle.putString(Constants.VIDEO_URL, videoUrl)
 
         findNavController(R.id.container).navigate(

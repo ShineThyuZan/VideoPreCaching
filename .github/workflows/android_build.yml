@@ -8,7 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: action/checkout@v3
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+        with:
+            persist-credentials: false
+            ref: ${{ github.event.inputs.checkoutRef }}
 
       - name: Set Up JDK
         uses: actions/setup-java@v3

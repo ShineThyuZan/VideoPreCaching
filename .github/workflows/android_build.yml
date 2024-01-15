@@ -13,7 +13,7 @@ jobs:
         with:
             persist-credentials: false
             repository: ShineThyuZan/VideoPreCaching
-            ref: develop
+            ref: main
             token: ${{ secrets.helloIsMe }}  # Replace 'MY_PAT' with your secret name
 
       - name: Set Up JDK

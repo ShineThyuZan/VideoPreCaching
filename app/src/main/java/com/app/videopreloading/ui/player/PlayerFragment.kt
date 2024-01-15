@@ -14,13 +14,13 @@ import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.source.DefaultMediaSourceFactory
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
-import com.google.android.exoplayer2.upstream.*
+import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
+import com.google.android.exoplayer2.upstream.HttpDataSource
 import com.google.android.exoplayer2.upstream.cache.CacheDataSource
-import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory
-import com.google.android.exoplayer2.upstream.cache.CacheKeyFactory
 import com.google.android.exoplayer2.upstream.cache.SimpleCache
-import com.google.android.exoplayer2.util.Util
-import kotlinx.android.synthetic.main.player_fragment.*
+import kotlinx.android.synthetic.main.player_fragment.playerView
 
 
 class PlayerFragment : Fragment() {
@@ -50,12 +50,9 @@ class PlayerFragment : Fragment() {
     }
 
     private fun initPlayer() {
-        httpDataSourceFactory = DefaultHttpDataSource.Factory()
-            .setAllowCrossProtocolRedirects(true)
+        httpDataSourceFactory = DefaultHttpDataSource.Factory().setAllowCrossProtocolRedirects(true)
 
-        defaultDataSourceFactory = DefaultDataSourceFactory(
-            requireContext(), httpDataSourceFactory
-        )
+        defaultDataSourceFactory = DefaultDataSourceFactory(requireContext(), httpDataSourceFactory)
 
         cacheDataSourceFactory = CacheDataSource.Factory()
             .setCache(simpleCache)
@@ -64,10 +61,10 @@ class PlayerFragment : Fragment() {
 
         simpleExoPlayer = SimpleExoPlayer.Builder(requireContext())
             .setMediaSourceFactory(DefaultMediaSourceFactory(cacheDataSourceFactory)).build()
-
         val videoUri = Uri.parse(videoUrl)
         val mediaItem = MediaItem.fromUri(videoUri)
-        val mediaSource = ProgressiveMediaSource.Factory(cacheDataSourceFactory).createMediaSource(mediaItem)
+        val mediaSource =
+            ProgressiveMediaSource.Factory(cacheDataSourceFactory).createMediaSource(mediaItem)
 
         playerView.player = simpleExoPlayer
         simpleExoPlayer.playWhenReady = true

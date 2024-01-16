@@ -45,13 +45,11 @@ class PlayerFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         videoUrl = arguments?.getString(Constants.VIDEO_URL)
-
         initPlayer()
     }
 
     private fun initPlayer() {
         httpDataSourceFactory = DefaultHttpDataSource.Factory().setAllowCrossProtocolRedirects(true)
-
         defaultDataSourceFactory = DefaultDataSourceFactory(requireContext(), httpDataSourceFactory)
 
         cacheDataSourceFactory = CacheDataSource.Factory()

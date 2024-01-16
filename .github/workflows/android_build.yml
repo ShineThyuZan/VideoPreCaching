@@ -23,8 +23,8 @@ jobs:
           distribution: 'adopt'
 
 
-      - name: Build with Gradle
-        run: ./gradlew build
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
 
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4.1.0

@@ -32,7 +32,7 @@ class PlayerFragment : Fragment() {
     private val simpleCache: SimpleCache = MyApp.simpleCache
 
     companion object {
-        fun newInstance() = PlayerFragment()
+      //  fun newInstance() = PlayerFragment()
     }
 
     override fun onCreateView(

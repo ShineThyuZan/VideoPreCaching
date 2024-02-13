@@ -32,7 +32,8 @@ class PlayerFragment : Fragment() {
     private val simpleCache: SimpleCache = MyApp.simpleCache
 
     companion object {
-       fun newInstance() = PlayerFragment()
+        fun newInstance() = PlayerFragment()
+        //  fun newInstance() = PlayerFragment()
     }
 
     override fun onCreateView(
@@ -45,13 +46,11 @@ class PlayerFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         videoUrl = arguments?.getString(Constants.VIDEO_URL)
-
         initPlayer()
     }
 
     private fun initPlayer() {
         httpDataSourceFactory = DefaultHttpDataSource.Factory().setAllowCrossProtocolRedirects(true)
-
         defaultDataSourceFactory = DefaultDataSourceFactory(requireContext(), httpDataSourceFactory)
 
         cacheDataSourceFactory = CacheDataSource.Factory()

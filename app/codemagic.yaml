@@ -1,0 +1,46 @@
+workflows:
+  # Define your workflow name
+  android-workflow:
+    name: My Android Workflow
+    # Choose a suitable instance type
+    instance_type: mac_mini_m1
+    # Set a maximum build duration (optional)
+    max_build_duration: 60
+
+    environment:
+      # Install the Android SDK and related tools
+      tools:
+        android: latest
+        gradle: latest
+
+    scripts:
+      # Clone your repository
+      - name: Clone repository
+        script: |
+          git clone git@github.com:ShineThyuZan/VideoPreCaching.git
+
+      # Install app dependencies
+      - name: Install dependencies
+        script: |
+          cd VideoPreCaching
+          ./gradlew assembleDebug
+
+      # Run unit tests (optional)
+      - name: Run unit tests
+        script: |
+          cd VideoPreCaching
+          ./gradlew testDebug
+
+      # Build the debug APK
+      - name: Build debug APK
+        script: |
+          cd VideoPreCaching
+          ./gradlew assembleDebug
+
+    artifacts:
+      # Specify APK build outputs to be archived
+      - build/**/outputs/**/*.apk
+
+# You can define additional workflows for different purposes
+
+

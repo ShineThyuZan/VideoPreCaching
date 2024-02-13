@@ -32,9 +32,13 @@ class MainFragment : Fragment(), View.OnClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         videoList.add("https://dev-youknow-video-bucket.s3.ap-southeast-1.amazonaws.com/3d8da76c-c504-4731-82c9-56ac386e60fb_2024-01-12-11:29:43:60403717756614012145122.mp4")
+
         videoList.add("https://dev-youknow-video-bucket.s3.ap-southeast-1.amazonaws.com/3d8da76c-c504-4731-82c9-56ac386e60fb_2024-01-12-11:29:43:60403717756614012145122.mp4")
+
         buttonPlayVideo1.setOnClickListener(this)
+
         buttonPlayVideo2.setOnClickListener(this)
+
         startPreLoadingService()
     }
 
